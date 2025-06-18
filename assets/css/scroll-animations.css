@@ -1,0 +1,53 @@
+/* Base style for elements to be animated */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    will-change: opacity, transform; /* Optimize for animations */
+}
+
+/* Style for elements when they become visible */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional: Different animation types */
+.animate-on-scroll.fade-in {
+    transform: translateY(0); /* Override default translateY if only fade is desired */
+}
+
+.animate-on-scroll.slide-in-left {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.animate-on-scroll.slide-in-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-on-scroll.slide-in-right {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.animate-on-scroll.slide-in-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-on-scroll.zoom-in {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.animate-on-scroll.zoom-in.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered animations for child elements */
+.stagger-children > .animate-on-scroll {
+    transition-delay: calc(var(--stagger-index, 0) * 200ms);
+}

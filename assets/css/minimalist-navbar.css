@@ -1,0 +1,350 @@
+:root {
+    --navbar-height: 80px;
+    --navbar-padding: 0 2rem;
+    --brand-font-size: 1.8rem;
+    --nav-link-font-size: 1rem;
+    --cta-font-size: 1rem;
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --text-color: #333;
+    --background-color: #fff;
+    --accent-color: #ff4081;
+    --hover-color: #0056b3;
+    --mobile-menu-bg: rgba(255, 255, 255, 0.98);
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Assuming Poppins is used, adjust if not */
+    padding-top: var(--navbar-height); /* Add padding to body to prevent content overlap */
+}
+
+.minimalist-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.minimalist-navbar {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    padding: var(--navbar-padding);
+}
+
+.navbar-container-minimalist {
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Brand/Logo */
+.navbar-brand-minimalist {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: var(--brand-font-size);
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.navbar-brand-minimalist:hover .brand-text-minimalist {
+    color: var(--primary-color);
+}
+
+.navbar-brand-minimalist:hover .brand-accent-minimalist {
+    color: var(--accent-color);
+}
+
+.brand-text-minimalist {
+    transition: color 0.3s ease;
+}
+
+.brand-accent-minimalist {
+    color: var(--primary-color);
+    margin-left: 0.25em;
+    transition: color 0.3s ease;
+}
+
+/* Desktop Navigation Menu */
+.navbar-menu-minimalist {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav-minimalist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-item-minimalist {
+    margin-left: 2rem; /* Adjust spacing */
+}
+
+.nav-item-minimalist:first-child {
+    margin-left: 0;
+}
+
+.nav-link-minimalist {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-size: var(--nav-link-font-size);
+    font-weight: 500;
+    padding: 0.5em 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link-minimalist::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link-minimalist:hover,
+.nav-link-minimalist.active {
+    color: var(--primary-color);
+}
+
+.nav-link-minimalist:hover::after,
+.nav-link-minimalist.active::after {
+    width: 100%;
+}
+
+/* CTA Button */
+.navbar-cta-minimalist {
+    margin-left: 2rem; /* Adjust spacing */
+}
+
+.cta-button-minimalist {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75em 1.5em;
+    border-radius: 25px; /* Pill shape */
+    font-weight: 600;
+    font-size: var(--cta-font-size);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.cta-button-minimalist span {
+    margin-right: 0.5em;
+}
+
+.cta-button-minimalist i {
+    transition: transform 0.3s ease;
+}
+
+.cta-button-minimalist:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+.cta-button-minimalist:hover i {
+    transform: translateX(3px);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle-minimalist {
+    display: none; /* Hidden by default, shown in media query */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001; /* Above mobile menu */
+}
+
+.hamburger-icon-minimalist {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    position: relative;
+    transition: background-color 0s 0.3s; /* Delay background clear for smoother transition */
+}
+
+.hamburger-icon-minimalist::before,
+.hamburger-icon-minimalist::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+}
+
+.hamburger-icon-minimalist::before {
+    top: -7px;
+}
+
+.hamburger-icon-minimalist::after {
+    bottom: -7px;
+}
+
+/* Mobile Menu Toggle Animation (when active) */
+.mobile-menu-toggle-minimalist.active .hamburger-icon-minimalist {
+    background-color: transparent; /* Middle line disappears */
+}
+
+.mobile-menu-toggle-minimalist.active .hamburger-icon-minimalist::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.mobile-menu-toggle-minimalist.active .hamburger-icon-minimalist::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-menu-minimalist {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Start off-screen */
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: var(--mobile-menu-bg);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding: calc(var(--navbar-height) + 2rem) 2rem 2rem; /* Add padding below header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the top */
+    z-index: 999;
+    transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Smooth slide-in */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.mobile-menu-minimalist.active {
+    right: 0;
+}
+
+.mobile-menu-close-minimalist {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-close-minimalist:hover {
+    color: var(--primary-color);
+}
+
+.mobile-nav-links-minimalist {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0; /* Space above and below links */
+    width: 100%;
+    text-align: center;
+}
+
+.mobile-nav-links-minimalist li {
+    margin-bottom: 1.5rem;
+}
+
+.mobile-nav-links-minimalist a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem; /* Larger font for mobile */
+    font-weight: 600;
+    padding: 0.5em;
+    display: block;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 8px;
+}
+
+.mobile-nav-links-minimalist a:hover {
+    color: var(--primary-color);
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+.mobile-cta-button-minimalist {
+    text-decoration: none;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.8em 2em;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    margin-top: auto; /* Push to bottom if space allows */
+    width: calc(100% - 4rem); /* Full width minus padding */
+    text-align: center;
+}
+
+.mobile-cta-button-minimalist:hover {
+    background-color: #e6005c; /* Darker accent */
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) { /* Tablet and below */
+    .navbar-menu-minimalist,
+    .navbar-cta-minimalist {
+        display: none;
+    }
+
+    .mobile-menu-toggle-minimalist {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) { /* Smaller tablets / large phones */
+    :root {
+        --navbar-padding: 0 1.5rem;
+        --brand-font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) { /* Small phones */
+    :root {
+        --navbar-padding: 0 1rem;
+        --brand-font-size: 1.4rem;
+        --nav-link-font-size: 0.9rem; /* If nav links were visible */
+    }
+
+    .mobile-menu-minimalist {
+        width: 90%;
+    }
+
+    .mobile-nav-links-minimalist a {
+        font-size: 1.2rem;
+    }
+
+    .mobile-cta-button-minimalist {
+        font-size: 1rem;
+        padding: 0.7em 1.5em;
+    }
+}
+
+/* Optional: Add a body class when mobile menu is open to prevent background scroll */
+body.mobile-menu-open {
+    overflow: hidden;
+}

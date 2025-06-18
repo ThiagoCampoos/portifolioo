@@ -1,0 +1,268 @@
+:root {
+    --glass-navbar-height: 80px;
+    --glass-navbar-padding: 0 2rem;
+    --glass-brand-font-size: 1.8rem;
+    --glass-nav-link-font-size: 1rem;
+    --glass-cta-font-size: 1rem;
+
+    --glass-primary-color: #00e5ff; /* Cyan accent */
+    --glass-secondary-color: #adadad; /* Light gray for text */
+    --glass-text-color: #ffffff;
+    --glass-background-start: rgba(20, 20, 30, 0.6);
+    --glass-background-end: rgba(40, 40, 60, 0.4);
+    --glass-border-color: rgba(255, 255, 255, 0.2);
+    --glass-blur-intensity: 10px;
+    --glass-hover-bg-color: rgba(255, 255, 255, 0.1);
+    --glass-cta-bg-start: #00c6ff;
+    --glass-cta-bg-end: #0072ff;
+    --glass-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+body {
+    /* Ensure body padding is adjusted if navbar is fixed */
+    /* padding-top: var(--glass-navbar-height); */ 
+}
+
+.glass-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: linear-gradient(135deg, var(--glass-background-start), var(--glass-background-end));
+    backdrop-filter: blur(var(--glass-blur-intensity));
+    -webkit-backdrop-filter: blur(var(--glass-blur-intensity)); /* Safari */
+    border-bottom: 1px solid var(--glass-border-color);
+    box-shadow: var(--glass-box-shadow);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-navbar {
+    height: var(--glass-navbar-height);
+    display: flex;
+    align-items: center;
+    padding: var(--glass-navbar-padding);
+}
+
+.navbar-container-glass {
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Brand/Logo */
+.navbar-brand-glass {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: var(--glass-brand-font-size);
+    color: var(--glass-text-color);
+    transition: color 0.3s ease;
+}
+
+.navbar-brand-glass:hover .brand-text-glass {
+    color: var(--glass-primary-color);
+}
+
+.navbar-brand-glass .brand-accent-glass {
+    color: var(--glass-primary-color);
+    margin-left: 0.25em;
+}
+
+/* Desktop Navigation Menu */
+.navbar-menu-glass {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav-glass {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-item-glass {
+    margin-left: 2.5rem; /* Adjust spacing */
+}
+
+.nav-item-glass:first-child {
+    margin-left: 0;
+}
+
+.nav-link-glass {
+    text-decoration: none;
+    color: var(--glass-secondary-color);
+    font-size: var(--glass-nav-link-font-size);
+    font-weight: 500;
+    padding: 0.75em 1em;
+    border-radius: 8px;
+    position: relative;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link-glass:hover,
+.nav-link-glass.active {
+    color: var(--glass-text-color);
+    background-color: var(--glass-hover-bg-color);
+}
+
+/* CTA Button */
+.navbar-cta-glass {
+    margin-left: 2.5rem; /* Adjust spacing */
+}
+
+.cta-button-glass {
+    text-decoration: none;
+    background-image: linear-gradient(to right, var(--glass-cta-bg-start) 0%, var(--glass-cta-bg-end) 51%, var(--glass-cta-bg-start) 100%);
+    background-size: 200% auto;
+    color: white;
+    padding: 0.8em 1.8em;
+    border-radius: 25px; /* Pill shape */
+    font-weight: 600;
+    font-size: var(--glass-cta-font-size);
+    transition: background-position 0.4s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 4px 15px 0 rgba(0, 198, 255, 0.35);
+}
+
+.cta-button-glass span {
+    margin-right: 0.5em;
+}
+
+.cta-button-glass i {
+    transition: transform 0.3s ease;
+}
+
+.cta-button-glass:hover {
+    background-position: right center; /* change the direction of the change here */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(0, 198, 255, 0.5);
+}
+
+.cta-button-glass:hover i {
+    transform: translateX(3px);
+}
+
+/* Mobile Menu Styles (Basic Structure - to be expanded) */
+.mobile-menu-toggle-glass {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1002; /* Above mobile menu overlay */
+}
+
+.hamburger-icon-glass {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: var(--glass-text-color);
+    position: relative;
+    transition: background-color 0s 0.3s;
+}
+
+.hamburger-icon-glass::before,
+.hamburger-icon-glass::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--glass-text-color);
+    transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+}
+
+.hamburger-icon-glass::before {
+    top: -8px;
+}
+
+.hamburger-icon-glass::after {
+    bottom: -8px;
+}
+
+/* Active state for hamburger */
+.mobile-menu-toggle-glass.active .hamburger-icon-glass {
+    background-color: transparent; /* Center line disappears */
+}
+
+.mobile-menu-toggle-glass.active .hamburger-icon-glass::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.mobile-menu-toggle-glass.active .hamburger-icon-glass::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+}
+
+.mobile-menu-glass {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--glass-background-start), var(--glass-background-end));
+    backdrop-filter: blur(var(--glass-blur-intensity));
+    -webkit-backdrop-filter: blur(var(--glass-blur-intensity));
+    z-index: 1001;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+}
+
+.mobile-menu-glass.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.mobile-nav-glass {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mobile-nav-item-glass {
+    margin-bottom: 2rem;
+}
+
+.mobile-nav-link-glass {
+    text-decoration: none;
+    color: var(--glass-text-color);
+    font-size: 1.5rem; /* Larger for mobile */
+    font-weight: 600;
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.mobile-nav-link-glass:hover {
+    background-color: var(--glass-hover-bg-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) { /* Adjust breakpoint as needed */
+    .navbar-menu-glass,
+    .navbar-cta-glass {
+        display: none;
+    }
+
+    .mobile-menu-toggle-glass {
+        display: block;
+    }
+}
